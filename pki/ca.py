@@ -19,6 +19,11 @@ def _save_revoked(db):
         json.dump(db, f, indent=2)
 
 def bootstrap_ca():
+    os.makedirs(config.STORAGE["certs"], exist_ok=True)
+    os.makedirs(config.STORAGE["keys"], exist_ok=True)
+    os.makedirs(config.STORAGE["crl"], exist_ok=True)
+    os.makedirs(os.path.dirname(config.CA_KEY_PATH), exist_ok=True)
+    
     if os.path.exists(config.CA_CERT_PATH):
         return load_ca()
     key = rsa.generate_private_key(65537, 2048, default_backend())
