@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+storage/keys/
+storage/certs/
+storage/crl/
+storage/ca_cert.pem
+storage/ca_key.pem
+*.pem
